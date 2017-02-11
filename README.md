@@ -5,6 +5,7 @@ MoMMI is the bot that is used on the official [/vg/station13](http://ss13.moe/) 
 # Dependencies
 
 * `python 3.5`
+* 'libffi-dev'
 * [`PyYAML`](http://pyyaml.org/wiki/PyYAML)
 * [`discord.py`](https://github.com/Rapptz/discord.py)
 * [`aiofiles`](https://github.com/Tinche/aiofiles)
