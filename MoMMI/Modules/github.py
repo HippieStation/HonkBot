@@ -12,7 +12,6 @@ from ..client import client
 from ..util import getchannel, getserver
 from ..config import get_config
 from ..commands import always_command
-from .irc import irc_transform, prevent_ping
 
 logger = logging.getLogger(__name__)
 event_handlers = {}
@@ -261,4 +260,4 @@ def filter_issue_brackets(message, author, discord_server, irc_client):
 
 
 async def load():
-    irc_transform(filter_issue_brackets)
+	pass
