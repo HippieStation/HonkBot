@@ -51,7 +51,7 @@ cp -R "$CONFIG_DIR" "$SERVER_DIR/config"
 
 sed -i 's/\[RevisionHash\]/revisionhash/g' "$SERVER_DIR/config/motd.txt"
 sed -i 's/\[DiscordHost\]/http:\/\/ipaddr:port\/discord/g' "$SERVER_DIR/config/config.txt"
-sed -i 's/\[DiscordPassword\]/UQGwhh7HbZjYzEUQrKYCgMwq/g' "$SERVER_DIR/config/config.txt"
+sed -i 's/\[DiscordPassword\]/apassword/g' "$SERVER_DIR/config/config.txt"
 sed -i 's/\[SQLHost\]/host/g' "$SERVER_DIR/config/dbconfig.txt"
 sed -i 's/\[SQLDatabase\]/db/g' "$SERVER_DIR/config/dbconfig.txt"
 sed -i 's/\[SQLUsername\]/username/g' "$SERVER_DIR/config/dbconfig.txt"
