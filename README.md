@@ -13,3 +13,6 @@ MoMMI is the bot that is used on the official [/vg/station13](http://ss13.moe/) 
 * [`bottom`](https://github.com/numberoverzero/bottom)
 * [`github3.py`](https://github.com/sigmavirus24/github3.py)
 * [`colorhash`](https://pypi.python.org/pypi/colorhash)
+
+It runs on Python 3.6.
+
