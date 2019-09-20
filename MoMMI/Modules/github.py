@@ -339,9 +339,6 @@ def filter_issue_brackets(message, author, discord_server, irc_client):
 
 
 async def load():
-<<<<<<< HEAD
-	pass
-=======
     irc_transform(filter_issue_brackets)
 
 
@@ -458,4 +455,3 @@ async def close_self_reaction_pr(number: int, session: aiohttp.ClientSession):
     async with session.post(comment_url, headers=HEADERS, data=json.dumps({"body": "\> Reacting to your own PR"})) as resp:
         content = await resp.text()
         print(f"RESPONSE: {resp.status}, CONTENT: {content}")
->>>>>>> 9b7098826efc685e209aefaac2ad7af5f41783cd
