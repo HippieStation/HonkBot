@@ -4,9 +4,11 @@ import hmac
 import json
 import logging
 import struct
-from hashlib import sha1
+from hashlib import sha512
 from typing import Dict, Tuple, Any
 from .config import get_config
+
+DIGEST_SIZE = sha512().digest_size
 
 ERROR_OK = struct.pack("!B", 0)
 ERROR_ID = struct.pack("!B", 1)
@@ -54,11 +56,16 @@ class commloop(object):
 
         logger.info(f"Got ID packets: {data}.")
 
-        auth: bytes = await reader.read(20)  # 20 is the length of an SHA-1 hash.
+        auth: bytes = await reader.read(DIGEST_SIZE)
         logger.info(f"Got digest: {auth}.")
 
         length: int = struct.unpack("!I", await reader.read(4))[0]
-        data = await reader.read(length)
+        data = b""
+        while len(data) < length:
+            newdata = await reader.read(length - len(data))
+            if len(newdata) == 0:
+                break
+            data += newdata
         logger.info(f"Got message ength: {length}, data: {data}.")
         try:
             logger.info(f"Decoded: {data.decode('UTF-8')}")
@@ -71,7 +78,7 @@ class commloop(object):
             writer.write(ERROR_PACK)
             return
 
-        stomach: hmac.HMAC = hmac.new(AUTHKEY, data, sha1)
+        stomach: hmac.HMAC = hmac.new(AUTHKEY, data, sha512)
         if not hmac.compare_digest(stomach.digest(), auth):
             writer.write(ERROR_HMAC)
             return
